@@ -34,11 +34,13 @@ public interface AppConstant {
     String KEY_FRAGMENT_GENDER = "gender";
     String KEY_FRAGMENT_ORIENTATION = "orientation";
     String KEY_FRAGMENT_PROFILE_PIC = "profilePic";
+    String KEY_FRAGMENT_FLUSH_PREVIOUS_SESSIOINS = "flushPreviousSessions";
 
 
     //USER_SIGNUP_VALUES
     String VALUE_FRAGMENT_LANGUAGE = "EN";
     String VALUE_FRAGMENT_DEVICE_TYPE = "ANDROID";
     String VALUE_RAGMENT_DEVICE_TOKEN = "token";
+    String VALUE_FRAGMENT_FLUSH_PREVIOUS_SESSIOINS = "true";
     int VALUE_FRAGMENT_APP_VERSION = 100;
 }

@@ -33,7 +33,6 @@
         </receiver>
 
         <activity android:name=".activity.SplashActivity">
-
         </activity>
         <activity android:name=".activity.TestClassLocation">
         </activity>
@@ -68,6 +67,8 @@
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity android:name=".activity.DisplayResponseActivity">
         </activity>
     </application>
 

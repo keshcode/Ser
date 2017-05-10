@@ -16,6 +16,7 @@
 
         <com.skeleton.util.customview.MaterialEditText
             style="@style/EtTheme"
+            android:id="@+id/etSignInEmail"
             android:layout_marginBottom="@dimen/spacing_small"
             android:layout_weight="1"
             android:drawableStart="@drawable/icon_email"
@@ -24,6 +25,7 @@
 
         <com.skeleton.util.customview.MaterialEditText
             style="@style/EtTheme"
+            android:id="@+id/etSignInPassword"
             android:layout_marginBottom="@dimen/spacing_small"
             android:layout_weight="1"
             android:drawableStart="@drawable/icon_password"

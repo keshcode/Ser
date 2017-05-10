@@ -1,13 +1,11 @@
 package com.skeleton.retrofit;
 
 
-import com.google.gson.Gson;
-
 import java.util.HashMap;
 
 import okhttp3.RequestBody;
 import retrofit2.Call;
-import retrofit2.Response;
+import retrofit2.http.Body;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.Header;
@@ -16,6 +14,7 @@ import retrofit2.http.POST;
 import retrofit2.http.PartMap;
 
 import static com.skeleton.constant.ApiKeyConstant.AUTHORIZATION;
+import static com.skeleton.retrofit.ApiInterface.USER_LOGIN;
 
 /**
  * Developer: Saurabh Verma
@@ -34,7 +33,19 @@ public interface ApiInterface {
      */
     @Multipart
     @POST(USER_SIGNUP)
-    Call<Response<Gson>> userRegister(@PartMap HashMap<String, RequestBody> map);
+    Call<com.skeleton.model.Response> userRegister(@PartMap HashMap<String, RequestBody> map);
+
+    /**
+     * Api call for user Login
+     *
+     * @param authorization : header for api call
+     * @param map           : login data of user
+     * @return : response of server {@link CommonResponse}
+     */
+    @POST(USER_LOGIN)
+    Call<CommonResponse> userLogin(@Header(AUTHORIZATION) String authorization,
+                                   @Body HashMap<String, String> map);
+
 
 
 //    /**

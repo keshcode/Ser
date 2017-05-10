@@ -13,11 +13,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.google.gson.Gson;
 import com.kbeanie.multipicker.api.entity.ChosenImage;
 import com.skeleton.R;
+import com.skeleton.activity.DisplayResponseActivity;
 import com.skeleton.constant.AppConstant;
 import com.skeleton.retrofit.APIError;
 import com.skeleton.retrofit.ApiInterface;
@@ -38,7 +39,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import okhttp3.RequestBody;
-import retrofit2.Response;
 
 import static com.makeramen.roundedimageview.RoundedDrawable.TAG;
 
@@ -220,10 +220,20 @@ public class SignUpFragment extends Fragment {
                 .add(AppConstant.KEY_FRAGMENT_PROFILE_PIC, mProfilePic).build().getMap();
 
         ApiInterface apiInterface = RestClient.getApiInterface();
-        apiInterface.userRegister(multipartParams).enqueue(new ResponseResolver<Response<Gson>>(getActivity(), true, true) {
+        apiInterface.userRegister(multipartParams).enqueue(new ResponseResolver<com.skeleton.model.Response>(getActivity(), true, true) {
             @Override
-            public void success(final Response response) {
-                Log.d(TAG, "success: ");
+            public void success(final com.skeleton.model.Response response) {
+                Log.d(TAG, "success: " + response.getStatusCode());
+                Log.d(TAG, "success: " + response.getStatusCode());
+                Toast.makeText(getContext(), response.getMessage(), Toast.LENGTH_SHORT).show();
+                if ("200".equals(response.getStatusCode().toString())) {
+                    clearEditText(etName, etDOB, etConfirmPassword,
+                            etEmailAddr, etPassword, etPhoneNo);
+                    Intent intent = new Intent(getActivity(), DisplayResponseActivity.class);
+                    intent.putExtra("response", response);
+                    startActivity(intent);
+
+                }
 
             }
 
@@ -233,5 +243,21 @@ public class SignUpFragment extends Fragment {
                 Log.d(TAG, "failure: Message" + error.getMessage());
             }
         });
+
+
     }
+
+    /**
+     * Clear the string in the editext
+     *
+     * @param editText : multiple edittexts to be cleared
+     */
+
+    public static void clearEditText(final EditText... editText) {
+        for (EditText editText1 : editText) {
+            editText1.setText("");
+
+        }
+    }
+
 }
