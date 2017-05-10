@@ -1,0 +1,144 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'checkstyle'
+preBuild.dependsOn('checkstyle')
+assemble.dependsOn('lint')
+check.dependsOn('checkstyle')
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
+    /**
+     * Define you Project Name here
+     */
+    def appName = 'Base Project'
+
+/**
+ *
+ * For Internal user only
+ */
+    def APP_NAME = '\"' + (System.getenv("APP_NAME") ?: appName) + '\"'
+
+    defaultConfig {
+        applicationId "com.skeleton"
+        minSdkVersion 19
+        targetSdkVersion 25
+        versionCode 100
+        versionName "1.0.0"
+        resValue "string", "app_name", APP_NAME
+        buildConfigField "String", "APP_NAME", APP_NAME
+        resValue "string", "facebook_app_id", "[YOUR_PROJECT_FB_ID]"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        buildConfigField "String", "GOOGLE_URL", '"https://maps.googleapis.com/maps/api/"'
+    }
+    buildTypes {
+        debug {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            shrinkResources true
+        }
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            shrinkResources true
+        }
+    }
+    productFlavors {
+        DEV {
+            buildConfigField 'String', 'BASE_URL', '"http://52.38.181.185:3000/"'
+            buildConfigField 'boolean', 'WATER_MARK', 'true'
+        }
+        QA {
+            buildConfigField 'String', 'BASE_URL', '"YOUR TEST URL"'
+            buildConfigField 'boolean', 'WATER_MARK', 'true'
+        }
+        LIVE {
+            buildConfigField 'String', 'BASE_URL', '"YOUR LIVE URL"'
+            buildConfigField 'boolean', 'WATER_MARK', 'false'
+        }
+        applicationVariants.all { variant ->
+            variant.outputs.each { output ->
+                output.outputFile = new File(output.outputFile.parent,
+                        output.outputFile.name.replace(output.outputFile.name, (appName + "_" + variant.productFlavors[0].name + "_" + buildType.name + "_v" + defaultConfig.versionCode).toLowerCase() + ".apk"));
+            }
+        }
+    }
+}
+
+dependencies {
+    /**
+     * If there are any jar file include
+     */
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    /**
+     *
+     * android development support dependencies
+     */
+
+    /**
+     *
+     * android FCM dependencies
+     */
+
+    /**
+     *
+     *  android Map and Location dependencies
+     */
+
+    /**
+     *
+     * Retrofit dependencies
+     */
+
+    /**
+     *
+     * To set the fonts dependencies
+     */
+    /**
+     * Paper DB dependencies
+     */
+
+    /**
+     * Facebook dependencies
+     */
+    /**
+     * Image chooser dependencies
+     */
+    /**
+     * Image Crop dependencies
+     */
+
+    /**
+     * leakcanary dependencies
+     */
+
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.android.support:support-v4:25.1.0'
+    compile 'com.android.support:customtabs:25.3.1'
+    compile 'com.android.support:cardview-v7:25.3.1'
+    compile 'com.android.support:recyclerview-v7:25.3.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.google.firebase:firebase-messaging:10.2.1'
+    compile 'com.google.android.gms:play-services-maps:10.2.1'
+    compile 'com.google.android.gms:play-services-location:10.2.1'
+    compile 'com.squareup.retrofit2:retrofit:2.2.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.2.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'
+    compile 'uk.co.chrisjenx:calligraphy:2.2.0'
+    compile 'io.paperdb:paperdb:2.0'
+    compile 'com.facebook.android:facebook-android-sdk:4.21.1'
+    compile 'com.kbeanie:multipicker:1.1.31@aar'
+    compile 'com.theartofdev.edmodo:android-image-cropper:2.3.+'
+    testCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    testCompile 'junit:junit:4.12'
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5'
+    compile 'com.makeramen:roundedimageview:2.3.0'
+    compile 'com.android.support:design:25.3.1'
+}
+apply plugin: 'com.google.gms.google-services'

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/llForm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical"
+        android:paddingEnd="@dimen/spacing_small"
+        android:paddingStart="@dimen/spacing_small">
+
+
+        <com.skeleton.util.customview.MaterialEditText
+            style="@style/EtTheme"
+            android:layout_marginBottom="@dimen/spacing_small"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/icon_email"
+            android:hint="@string/email_address"
+            android:inputType="textEmailAddress"/>
+
+        <com.skeleton.util.customview.MaterialEditText
+            style="@style/EtTheme"
+            android:layout_marginBottom="@dimen/spacing_small"
+            android:layout_weight="1"
+            android:drawableStart="@drawable/icon_password"
+            android:hint="@string/password"
+            android:inputType="textPassword"/>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/font_normal"
+            android:text="@string/remember_me"/>
+
+        <TextView
+            android:id="@+id/tvForgotpass"
+            style="@style/TvTheme"
+            android:layout_weight="1"
+            android:text="@string/forgot_password"
+            android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/btnLogin"
+            style="@style/btnTheme"
+            android:layout_marginBottom="@dimen/spacing_small"
+            android:layout_weight="1"
+            android:text="@string/login"/>
+
+        <Button
+            android:id="@+id/btnSignInWithFacebook"
+            style="@style/btnTheme"
+            android:layout_marginBottom="@dimen/spacing_small"
+            android:layout_weight="1"
+            android:text="@string/sign_in_with_facebook"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

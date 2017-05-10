@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "447240099976",
+    "firebase_url": "https://skeleton-23797.firebaseio.com",
+    "project_id": "skeleton-23797",
+    "storage_bucket": "skeleton-23797.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:447240099976:android:7a90d7bd1b0b0f4d",
+        "android_client_info": {
+          "package_name": "com.skeleton"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "447240099976-ofr7mni3u3jei8d7uep82uhasj4h5vnn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB62Gs3sm0fvdRiALyI3KmaGWQ4dbaTUFk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

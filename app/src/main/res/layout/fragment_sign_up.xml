@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:layout_marginStart="@dimen/spacing_tiny"
+            android:orientation="vertical">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/ivProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/spacing_tiny"
+                android:layout_marginTop="@dimen/spacing_tiny"
+                android:src="@drawable/user_placeholder"/>
+
+
+            <com.skeleton.util.customview.MaterialEditText
+                android:id="@+id/etName"
+                style="@style/EtTheme"
+                android:drawableStart="@drawable/icon_name"
+                android:hint="@string/first_name"
+                android:inputType="textEmailAddress"/>
+
+
+            <com.skeleton.util.customview.MaterialEditText
+                android:id="@+id/etPhoneNo"
+                style="@style/EtTheme"
+                android:drawableStart="@drawable/icon_contact"
+                android:hint="@string/contact_number"
+                android:inputType="number"
+                android:maxLength="@string/max_phone_no_length"/>
+
+            <com.skeleton.util.customview.MaterialEditText
+                android:id="@+id/etDOB"
+                style="@style/EtTheme"
+                android:drawableStart="@drawable/icon_name"
+                android:hint="@string/dob"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/spacing_normal"
+                    android:layout_marginStart="@dimen/spacing_tiny"
+                    android:text="@string/gender"/>
+
+                <RadioGroup
+                    android:id="@+id/rgGender"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:id="@+id/rbMale"
+                        android:layout_height="wrap_content"
+                        android:text="male"/>
+
+                    <RadioButton
+                        android:layout_width="wrap_content"
+                        android:id="@+id/rbFemale"
+                        android:layout_height="wrap_content"
+                        android:text="female"/>
+                </RadioGroup>
+            </LinearLayout>
+
+            <com.skeleton.util.customview.MaterialEditText
+                android:id="@+id/etEmailAddr"
+                style="@style/EtTheme"
+                android:drawableStart="@drawable/icon_email"
+                android:hint="@string/email_address"
+                android:inputType="textEmailAddress"/>
+
+            <com.skeleton.util.customview.MaterialEditText
+                android:id="@+id/etPassword"
+                style="@style/EtTheme"
+                android:drawableStart="@drawable/icon_password"
+                android:hint="@string/password"
+                android:inputType="textPassword"/>
+
+
+            <com.skeleton.util.customview.MaterialEditText
+                android:id="@+id/etConfirmPassword"
+                style="@style/EtTheme"
+                android:drawableStart="@drawable/icon_password"
+                android:hint="@string/confirm_password"
+                android:inputType="textPassword"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <CheckBox
+                    android:id="@+id/cbTermsAndCondi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/font_normal"/>
+
+                <TextView
+                    style="@style/TvTheme"
+                    android:text="@string/i_accept"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnSignUp"
+                style="@style/btnTheme"
+                android:layout_marginBottom="@dimen/spacing_medium"
+                android:text="@string/sign_up"/>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
